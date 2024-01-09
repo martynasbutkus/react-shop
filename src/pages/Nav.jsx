@@ -1,13 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const Nav = () => {
+  const location = useLocation();
+
+  const activeStyle = {
+    color: 'red',
+    fontWeight: 'bold',
+  };
+
   return (
     <nav>
-      <NavLink to="/" className="active">
+      <NavLink to="/" style={location.pathname === '/' ? activeStyle : {}}>
         Products
       </NavLink>
-      <NavLink to="/form" className="active">
+      <NavLink to="/form" style={location.pathname === '/form' ? activeStyle : {}}>
         Form
       </NavLink>
     </nav>
